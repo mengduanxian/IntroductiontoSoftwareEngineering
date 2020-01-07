@@ -1,2 +1,2 @@
 # IntroductionToSoftwareEngineering
-CMPT 276
+CMPT 276 course notes
