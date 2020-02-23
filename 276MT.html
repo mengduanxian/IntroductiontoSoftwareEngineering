@@ -1,0 +1,773 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>276MT</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+  --bg-color:  #363B40;
+  --side-bar-bg-color: #2E3033;
+  --text-color: #b8bfc6;
+
+  --select-text-bg-color:#4a89dc;
+
+  --item-hover-bg-color: #0a0d16;
+  --control-text-color: #b7b7b7;
+  --control-text-hover-color: #eee;
+
+  --active-file-bg-color: rgb(34, 34, 34);
+  --active-file-border-color: #8d8df0;
+
+  --primary-color: #a3d5fe;
+
+  --active-file-text-color: white;
+  --item-hover-bg-color: #70717d;
+  --item-hover-text-color: white;
+  --primary-color: #6dc1e7;
+
+  --rawblock-edit-panel-bd: #333;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  top: 20px;
+  padding-top: 0;
+  height: auto;
+}
+
+html,
+body,
+#write {
+  background: #363b40;
+  background: var(--bg-color);
+  font-family: 'Mplus1p', sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #dedede;
+  font-family: 'Mplus1p Bold', sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+#write {
+  max-width: 1024px;
+  text-align: justify;
+}
+
+#write>h1:first-child {
+  margin-top: 2.75rem;
+}
+
+#write>h2:first-child {
+  margin-top: 1.75rem;
+}
+
+#write>h3:first-child {
+  margin-top: 1rem;
+}
+
+#write>h4:first-child {
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-weight: normal;
+  line-height: 4rem;
+  font-size: 3rem;
+  margin: 0 0 1.75rem;
+}
+
+h2 {
+  font-weight: normal;
+  line-height: 3rem;
+  margin: 0 0 1.9375rem;
+}
+
+h3 {
+  font-weight: normal;
+}
+
+h4 {
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: normal;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+p {
+  color: #b8bfc6;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  margin: 0 0 1.25rem;
+}
+
+#write>h3.md-focus:before {
+  left: -1.875rem;
+  top: 0.5rem;
+  padding: 2px;
+}
+
+#write>h4.md-focus:before {
+  left: -1.875rem;
+  top: 0.3125rem;
+  padding: 2px;
+}
+
+#write>h5.md-focus:before {
+  left: -1.875rem;
+  top: 0.25rem;
+  padding: 2px;
+}
+
+#write>h6.md-focus:before {
+  left: -1.875rem;
+  top: .125rem;
+  padding: 2px;
+}
+
+@media screen and (max-width: 48em) {
+  blockquote {
+    margin-left: 1rem;
+    margin-right: 0;
+    padding: 0.5em;
+  }
+
+  .h1,
+  h1 {
+    font-size: 2.827rem;
+  }
+
+  .h2,
+  h2 {
+    font-size: 1.999rem;
+  }
+
+  .h3,
+  h3 {
+    font-size: 1.413rem;
+  }
+
+  .h4,
+  h4 {
+    font-size: 1.250rem;
+  }
+
+  .h5,
+  h5 {
+    font-size: 1.150rem;
+  }
+
+  .h6,
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+a,
+.md-def-url {
+  color: #990000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:link {
+  color: #00ffff;
+}
+
+table {
+  margin-bottom: 20px
+}
+
+table th,
+table td {
+  padding: 8px;
+  line-height: 1.25rem;
+  vertical-align: top;
+  border-top: 1px solid #ddd
+}
+
+table th {
+  font-weight: bold
+}
+
+table thead th {
+  vertical-align: bottom
+}
+
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+  border-top: 0
+}
+
+table tbody+tbody {
+  border-top: 2px solid #ddd
+}
+
+.md-fences {
+  border: 1px solid #ccc;
+  padding: .5em;
+  font-size: 0.9em;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+.md-fences {
+  margin: 0 0 20px;
+  font-size: 1em;
+  padding: 0.3em 1em;
+  padding-top: 0.4em;
+}
+
+.task-list {
+  padding-left: 0;
+}
+
+.task-list-item {
+  padding-left: 2.125rem;
+}
+
+.task-list-item input {
+  top: 3px;
+}
+
+.md-task-list-item input {
+  margin-left: -1.5em;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+  .task-list-item input:before {
+    margin-top: -0.2rem;
+  }
+
+  .task-list-item input:checked:before,
+  .task-list-item input[checked]:before {
+    margin-top: -0.2rem;
+  }
+}
+
+blockquote {
+  margin: 0 0 1.11111rem;
+  padding: 0.5rem 1.11111rem 0 1.05556rem;
+  border-left: 1px solid gray;
+}
+
+blockquote,
+blockquote p {
+  line-height: 1.6;
+  color: #8f6f6f;
+}
+
+#write pre.md-meta-block {
+  min-height: 30px;
+  background: #f8f8f8;
+  padding: 1.5em;
+  font-weight: 300;
+  font-size: 1em;
+  padding-bottom: 1.5em;
+  padding-top: 3em;
+  margin-top: -1.5em;
+  color: #999;
+
+  width: 100vw;
+  max-width: calc(100% + 60px);
+  margin-left: -30px;
+  border-left: 30px #f8f8f8 solid;
+  border-right: 30px #f8f8f8 solid;
+}
+
+.MathJax_Display {
+  font-size: 0.9em;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+p.mathjax-block,
+.mathjax-block {
+  padding-bottom: 0;
+}
+
+.mathjax-block>.code-tooltip {
+  bottom: 5px;
+  box-shadow: none;
+}
+
+.md-image>.md-meta {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.md-image>img {
+  margin-top: 2px;
+}
+
+.md-image>.md-meta:first-of-type:before {
+  padding-left: 4px;
+}
+
+#typora-source {
+  color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+  border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+  border: 1px solid #ccc;
+}
+
+#md-notification:before {
+  top: 14px;
+}
+
+#md-notification {
+  background: #eee;
+}
+
+.md-mathjax-midline {
+  background-color: #57616b;
+  border-bottom: none;
+}
+
+footer.ty-footer {
+  border-color: #656565;
+}
+
+.ty-preferences .btn-default {
+  background: transparent;
+}
+.ty-preferences .btn-default:hover {
+  background: #57616b;
+}
+
+.ty-preferences select {
+  border: 1px solid #989698;
+  height: 21px;
+}
+
+.ty-preferences .nav-group-item.active {
+  background: var(--item-hover-bg-color);
+}
+
+.ty-preferences input[type="search"] {
+  border-color: #333;
+  background: #333;
+  line-height: 22px;
+  border-radius: 6px;
+  color: white;
+}
+
+.ty-preferences input[type="search"]:focus {
+  box-shadow: none;
+}
+
+.megamenu-menu-panel .btn {
+  border: 1px solid #ccc;
+}
+
+#typora-sidebar {
+  box-shadow: none;
+}
+
+.file-list-item,
+.show-folder-name .file-list-item {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  line-height: 20px;
+}
+
+.file-list-item-summary {
+  height: 40px;
+  line-height: 20px;
+}
+
+.ty-table-edit {
+  background: #ededed;
+}
+
+.dropdown-menu .divider {
+  border-color: #e5e5e5;
+}
+
+pre,
+code,
+kbd,
+tt,
+var {
+  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+/** Syntax highlight */
+
+.cm-s-inner .cm-variable,
+.cm-s-inner .cm-operator,
+.cm-s-inner .cm-property {
+  color: #b8bfc6;
+}
+
+.cm-s-inner .cm-keyword {
+  color: #C88FD0;
+}
+
+.cm-s-inner .cm-tag {
+  color: #7DF46A;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #7575E4;
+}
+
+.CodeMirror div.CodeMirror-cursor {
+  border-left: 1px solid #b8bfc6;
+  z-index: 3;
+}
+
+.cm-s-inner .cm-string {
+  color: #D26B6B;
+}
+
+.cm-s-inner .cm-comment,
+.cm-s-inner.cm-comment {
+  color: #DA924A;
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner .cm-def,
+.cm-s-inner.cm-header,
+.cm-s-inner.cm-def {
+  color: #8d8df0;
+}
+
+.cm-s-inner .cm-quote,
+.cm-s-inner.cm-quote {
+  color: #57ac57;
+}
+
+.cm-s-inner .cm-hr {
+  color: #d8d5d5;
+}
+
+.cm-s-inner .cm-link {
+  color: #d3d3ef;
+}
+
+.cm-s-inner .cm-negative {
+  color: #d95050;
+}
+
+.cm-s-inner .cm-positive {
+  color: #50e650;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #f50;
+}
+
+.cm-s-inner .cm-meta,
+.cm-s-inner .cm-qualifier {
+  color: #b7b3b3;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #f3b3f8;
+}
+
+.cm-s-inner .cm-bracket {
+  color: #997;
+}
+
+.cm-s-inner .cm-atom,
+.cm-s-inner.cm-atom {
+  color: #84B6CB;
+}
+
+.cm-s-inner .cm-number {
+  color: #64AB8F;
+}
+
+.cm-s-inner .cm-variable {
+  color: #b8bfc6;
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #9FBAD5;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #1cc685;
+}
+
+.CodeMirror-selectedtext,
+.CodeMirror-selected {
+  background: #4a89dc;
+  color: #fff !important;
+  text-shadow: none;
+}
+
+.CodeMirror-gutters {
+  border-right: none;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><h1><a name="midterm-review" class="md-header-anchor"></a><span>Midterm Review</span></h1><h2><a name="0-admin" class="md-header-anchor"></a><span>0-Admin</span></h2><ul><li><p><span>3 components of course</span></p><ul><li><span>Methodologies - Processes to develop software systems.</span></li><li><span>Tools - Tools used to create professional software. </span></li><li><span>Android - Learn to develop applications for a new platform. </span></li></ul></li></ul><h2><a name="1-intro-to-software-engineering-se" class="md-header-anchor"></a><span>1-Intro to Software Engineering (SE)</span></h2><ul><li><h5><a name="what-is-software-engineering-memorize" class="md-header-anchor"></a><span>What is Software Engineering? (memorize)</span></h5><ul><li><p><span>Software engineering is concerned with theories, methods, and tools for professional software development. </span></p></li><li><p><span>It is a </span><u><span>discipline</span></u><span> concerned with </span><u><span>all aspects of software production</span></u><span> from specification  through maintaining system while in use. </span></p><ul><li><u><span>discipline</span></u><span> - Using appropriate theories and methods to solve problems meeting business and financial constraints. </span></li><li><u><span>all aspects of software production</span></u><span> - Not just writing code: includes project management, development of tools, methods, etc. to support software production. </span></li></ul></li></ul></li><li><h5><a name="importance-of-software-engineering-memorize" class="md-header-anchor"></a><span>Importance of software engineering (memorize)</span></h5><ul><li><span>More and more, individuals and society rely on advanced software systems. We need to be able to produce reliable and trustworthy systems economically and quickly. </span></li><li><span>It is usually cheaper, in the long run, to use software engineering methods and techniques for software systems rather than just write the programs as if it was a personal programming project. For most types of systems, the majority of costs are the costs of changing the software after it has gone to use. </span></li></ul></li><li><h5><a name="4-fundamental-software-process-activities-memorize" class="md-header-anchor"></a><span>4 fundamental software process activities (memorize)</span></h5><ul><li><p><strong><span>Software Specification</span></strong><span> 规范</span></p><ul><li><span>customer and developers define software features and constraints on its operation (操作). </span></li></ul></li><li><p><strong><span>Software Development</span></strong></p><ul><li><span>design and program the software. </span></li></ul></li><li><p><strong><span>Software Validation</span></strong></p><ul><li><span>ensure software is what customer requires. </span></li></ul></li><li><p><strong><span>Software Evolution</span></strong><span> 演化</span></p><ul><li><span>modify software to reflect changing customer and market requirements. </span></li></ul></li></ul></li><li><h5><a name="4-essential-attributes-of-good-software-be-able-to-talk-about-the-topicitems" class="md-header-anchor"></a><span>4 essential attributes of good software (be able to talk about the topic/items)</span></h5><ul><li><p><strong><span>Maintainability</span></strong><span>  可维护性</span></p><ul><li><span>Change is inevitable(必然的): develop software so that it can evolve to meet changing needs of customers. </span></li></ul></li><li><p><strong><span>Dependability and Security</span></strong><span> 可靠性和安全性</span></p><ul><li><span>Must be reliable, secure, and safe: not cause physical or economic damage on failure. </span></li><li><span>Malicious(恶意的) users unable to access / damage the system. </span></li></ul></li><li><p><strong><span>Efficiency</span></strong><span> </span></p><ul><li><span>Efficient use of resources: processing time, memory. </span></li></ul></li><li><p><strong><span>Acceptability</span></strong><span> 可接受性</span></p><ul><li><span>Software must be acceptable its users: understandable, usable, and compatible with other systems. </span></li></ul></li></ul></li><li><h5><a name="whats-the-difference-of-functional-requirements-and-non-functional-requirements" class="md-header-anchor"></a><span>What&#39;s the difference of functional requirements and non-functional requirements?</span></h5><ul><li><span>A functional requirement describes what a software system should do, while a non-functional requirements place constraints on how the system will do so. </span></li><li><span>ex of functional requirements: A system must send an email whenever a certain condition is met (e.g. an order is placed, a customer signs up, etc).</span></li><li><span>ex of non-functional requirements: Emails should be sent with a latency of no greater than 12 hours from such an activity.</span></li><li><span>The functional requirement is describing the behavior of the system as it relates to the system&#39;s functionality. </span></li><li><span>The non-functional requirement elaborates a performance characteristic of the system. </span></li></ul></li><li><h5><a name="diversity-of-the-types-of-software-engineering-be-able-to-talk-about-the-topicitems" class="md-header-anchor"></a><span>diversity of the types of software engineering (be able to talk about the topic/items)</span></h5><ul><li><p><strong><span>Stand-alone applications</span></strong><span> 独立应用程序</span></p><ul><li><span>include all necessary functionality;</span></li><li><span>do not need to be connected to a network. </span></li></ul></li><li><p><strong><span>Embedded</span></strong><span> </span></p><ul><li><span>Software control systems managing hardware devices. </span></li><li><span>More embedded systems than any other type of systems. </span></li></ul></li><li><p><strong><span>Entertainment</span></strong></p><ul><li><span>Games primarily for personal use. </span></li></ul></li><li><p><strong><span>Batch processing</span></strong><span> 批量处理</span></p><ul><li><span>ex: payroll (工资单); monthly billing by a phone company. </span></li><li><span>Process data in large batches. </span></li></ul></li><li><p><strong><span>Modelling and simulation</span></strong></p><ul><li><span>For scientists and engineers to model complex physical process or situations. </span></li><li><span>ex: car crashes, nuclear reactions, weather prediction. </span></li></ul></li><li><p><strong><span>Data collection</span></strong></p><ul><li><span>Collect sensor data(传感器数据) to send to other systems for processing. </span></li></ul></li><li><p><strong><span>Systems of systems</span></strong></p><ul><li><span>Combine some other software systems. </span></li><li><span>Ex: Car. </span></li></ul></li><li><p><strong><span>Web software</span></strong></p><ul><li><span>Reuses many system components</span></li><li><span>user interfaces limited by web browser. </span></li></ul></li><li><p><strong><span>Software as a Service</span></strong></p><ul><li><p><span>Applications run remotely on the cloud. Users don&#39;t buy software but pay according to use. </span></p></li><li><p><span>Ex: Google docs, Amazon Web Services, etc. </span></p></li><li><p><span>Cloud &#39;as-a-service&#39; types: </span></p><ul><li><span>Software as a Service (SaaS)</span></li><li><span>Infrastructure as a Services (IaaS)</span></li><li><span>Platform as a Services (Paas)</span></li></ul></li></ul></li></ul></li><li><h5><a name="how-each-type-of-application-need-a-different-process" class="md-header-anchor"></a><span>How each type of application need a different process?</span></h5><ul><li><h5><a name="how-the-applications-functional-and-non-functional-requirements" class="md-header-anchor"></a><span>(how the applications functional and non-functional requirements)</span></h5></li><li><h5><a name="how-they-differ-in-their-priorities" class="md-header-anchor"></a><span>(How they differ in their priorities)</span></h5></li><li><h5><a name="differences-in-lifecycles-and-lifetimes-of-the-applications" class="md-header-anchor"></a><span>Differences in lifecycles and lifetimes of the applications </span></h5></li><li><h5><a name="etc" class="md-header-anchor"></a><span>etc</span></h5></li><li><p><span>Diverse types of systems</span></p><ul><li><span>Distributed systems operate across networks: different types of computer and mobile devices. </span></li></ul></li><li><p><span>Changing environment</span></p><ul><li><span>software has to keep up with rapidly changing business and society. </span></li><li><span>Must change existing software and rapidly develop new software. </span></li></ul></li><li><p><span>Security and Trust</span></p><ul><li><span>software is intertwined(交织) with all aspects of our lives: it is essential that we can trust it. </span></li><li><span>eg. Banking, Vehicle, government. </span></li></ul></li></ul></li><li><p><strong><span>Explain the need to be professional managed</span></strong></p><ul><li><p><span>Common need: All software projects should be professionally managed and developed. </span></p></li><li><p><span>Different Needs: Different types of systems require different techniques: </span></p><ul><li><span>games developed in series of playable versions. </span></li><li><span>life-critical systems need a complete specification. </span></li><li><span>no one method is better than others in all cases. </span></li></ul></li><li><p><span>Select software engineering methods and tools by: </span></p><ul><li><span>type of application being developed, </span></li><li><span>the requirements of the customer, and </span></li><li><span>the background of the development team. </span></li></ul></li></ul></li></ul><h2><a name="2-revision-control" class="md-header-anchor"></a><span>2-Revision Control</span></h2><ul><li><h5><a name="purpose-and-need-for-revision-control" class="md-header-anchor"></a><span>purpose and need for revision control</span></h5><ul><li><p><span>revision control 概念</span></p><ul><li><span>a system to manage changes to electronic documents.</span></li><li><span>also called version control, sources control, software configuration management. </span></li></ul></li><li><p><span>purpose and need </span></p><ul><li><span>need to coordinate changes made by multiple developers. </span></li><li><span>need a reliable system to ensure changes are not lost or incompatible. </span></li></ul></li></ul></li><li><p><strong><span>how Git operates in terms of the working directory, local repository, remote repository</span></strong></p><ul><li><span>Local machine has a Git Repository (Repo)</span></li><li><span>The latest code in the repo can be checked-out into the working directory. </span></li><li><span>Changes to files in the working directory are committed to the local repo. </span></li><li><span>Remote server has a Git repo, (server accessed by multiple developers.) local repo syncs up with remote repo by clone, push and pull commands. </span></li></ul></li><li><h5><a name="commit" class="md-header-anchor"></a><span>Commit </span></h5><ul><li><span>changes to files in the working directory are committed to the local repo. </span></li></ul></li><li><h5><a name="head" class="md-header-anchor"></a><span>head</span></h5><ul><li><span>the latest version of the code.</span></li><li><span>head(小写)是commit对象的引用。每个head都有一个名字（分支名字或标签名字等等），但在默认情况下，每个叫master的repository都会有一个head， 一个repo可以包含任意数量的head。</span></li></ul></li><li><h5><a name="clone" class="md-header-anchor"></a><span>clone</span></h5><ul><li><span>copy an existing repo on remote server to local computer. </span></li></ul></li><li><h5><a name="clone-command" class="md-header-anchor"></a><span>clone command</span></h5><ul><li><span>clone an existing repo to local PC.</span></li></ul></li><li><h5><a name="status-command" class="md-header-anchor"></a><span>status command</span></h5><ul><li><span>view the state of local file changes.</span></li></ul></li><li><h5><a name="add-command" class="md-header-anchor"></a><span>add command</span></h5><ul><li><span>stages the changes as being ready to commit. (将更改分阶段准备提交)</span></li><li><span>also used for adding files to Git (tracking them).</span></li></ul></li><li><h5><a name="commit-command" class="md-header-anchor"></a><span>commit command</span></h5><ul><li><span>commit all staged changes to local repo. </span></li><li><span>sometimes termed &quot;Check-in</span></li></ul></li><li><h5><a name="push-command" class="md-header-anchor"></a><span>push command</span></h5><ul><li><span>Transfer locally committed changes to remote repo. </span></li><li><span>if there&#39;s something new on the server, git will not allow you to push, must pull first. </span></li></ul></li><li><h5><a name="pull-command" class="md-header-anchor"></a><span>pull command</span></h5><ul><li><span>get changes from remote repo and apply them to local repo and working directory (move to head).</span></li><li><span>If there are any conflicting changes, may need to do a merge.</span></li></ul></li><li><h5><a name="log-command" class="md-header-anchor"></a><span>log command</span></h5><ul><li><span>at any time, can view the changes people have made. </span></li></ul></li><li><h5><a name="merge-command" class="md-header-anchor"></a><span>merge command</span></h5><ul><li><span>edjiawojd</span></li></ul></li><li><h5><a name="distributed-revision-control-system-分布式版本控制系统" class="md-header-anchor"></a><span>distributed revision control system 分布式版本控制系统</span></h5><ul><li><p><span>git has no single centralized master repository, each &quot;local repo&quot; is full and complete repo. (git没有单个集中式主存储库)</span></p></li><li><p><span>can work off-line (on a plane) and still commit to the local repo. Later sync up with the remote repo. </span></p><ul><li><p><span>引用知乎大神的解释：</span><a href='https://www.zhihu.com/question/20093241' target='_blank' class='url'>https://www.zhihu.com/question/20093241</a></p><p><strong><span>1. 去中心化</span></strong>
+<span>这个应该就是楼主所说的分布式。Git是没有中心服务器的，每个人机器上都是一个完整的库，我们平时开发代码时的中央服务器其实和我们自己机器上的库内容是完全一样的（格式有点不同，是bare的）。虽然平时大家都是将代码提交到中央服务器上再统一pull别人的代码，但实际情况你可以总是pull张三的库，然后push给李四等等操作。</span>
+<span>个人认为去中心化是Git（也包括其他分布式VCS）最伟大的改变。去中心化意味着没有权威、没有主力，所有人都是平等的。这概念本身看起来好像没什么，但实际对社区影响是巨大的，去看看 </span><a href='https://link.zhihu.com/?target=http%3A//github.com'><span>http://github.com</span></a><span> 上的fork功能，你可以fork任何一个你喜欢的项目，接着按自己的喜好修改成自己的项目，或是发起pull request请原作者merge你的功能到他们项目里去（这同样也得益于Git另一项与SVN很大不同的功能——分支策略），而且大多数开源项目都会鼓励你去fork它们。这里面没有权威，没有主从，所有人只要有兴趣都可以在其他人的基础上去构建更强大或是更有领域针对性的项目。大家不是为了开发某个项目而来，而是为了贡献更强的功能给社区，这样最终的项目将是整个社区所有人共同努力的结果，将生生世世繁衍不息。</span>
+<span>当然，去中心化也可能会引发一些问题，比如Linux的各种发行版本有时候让人难以抉择，但相信市场之手会帮我们做出选择。</span></p><p><strong><span>2. 本地提交</span></strong>
+<span>本地提交好处主要有3点：</span>
+<span>1) 断网提交</span>
+<span>2) 小步提交。可以对自己的阶段成果有跟踪，并且提高每次变更的安全性</span>
+<span>3) 本地库。这个和断网提交是同一个实现，但从需求角度出发则略有不同，主要是说即使只有自己一个人开发项目，也可以轻易的让自己的代码有版本跟踪，而不需要去费力建个什么svn server</span>
+<span>4) 本地回滚。这个其实是由于本地库的存在而产生的，但可以减少中央库上的冗余版本</span></p><p><strong><span>3. 分支策略</span></strong>
+<span>分支策略从技术上来讲是将版本节点化了，即最终的版本状态是树状的。从结果上来讲既是弱化了分支，也是强化了分支。弱化的是分支的概念，强化的是分支的功能。</span>
+<span>在Git实际开发中分支的分离和merge是属于日常操作，开启和合并分支成本相比SVN要小得多：SVN是复制一份代码到分支目录，Git则是在分支点做一下标记。随便一次冲突就会自动产生分支，所以大家每天都在与分支打交道。这便是弱化了分支的概念，由于分支成本很小，因此使得按功能分支的开发模式（每个分支一个功能，开发完了再merge到主干）变得非常简单，大家可以完全不需要再因为担心SCM成本太高而选用主干开发模式（所有功能都在主干上开发，到了发版本前再分离出分支）。</span></p><p><span>当然Git还有很多其他不错的地方，比如Tag策略（和分支策略一样，做个标记，不像SVN要复制一份过去），下载时会压缩以加快速度，各类提示非常到位</span></p></li></ul></li></ul></li><li><h5><a name="how-gitlab-fits-in" class="md-header-anchor"></a><span>how GitLab fits in?</span></h5><ul><li><span>GitLab is a dedicated Git server add extra team collaboration and discussion tools. </span></li></ul></li><li><h5><a name="basic-git-sequence-for-editing-code-without-a-branch" class="md-header-anchor"></a><span>basic git sequence for editing code (without a branch)</span></h5><ul><li><p><span>[create repo on csil-git1.cs.surrey.sfu.ca]</span></p></li><li><p><span>git clone </span><span>&lt;</span><span>git@csil-git1.cs...&gt;</span></p></li><li><p><span>[editing the file]</span></p></li><li><p><span>git status </span></p><ul><li><span>what currently change on local system.</span></li></ul></li><li><p><span>git add 文件名</span></p></li><li><p><span>git commit -m &quot;message&quot; OR git commit 打开view, :wq退出vim</span></p><ul><li><span>只是提交到本地，并没有提交到server</span></li></ul></li><li><p><span>git pull</span></p></li><li><p><span>git push </span></p><ul><li><span>提交到server (don&#39;t do force on group project)</span></li></ul></li><li><p><span>git log </span></p></li><li><p><span>git pull OR git pull origin master [拉取远程服务器origin的master分支]</span></p></li></ul></li><li><h5><a name="how-to-merge-conflicts-in-a-java-file-with-android-studio" class="md-header-anchor"></a><span>how to merge conflicts in a .java file with Android Studio</span></h5><ul><li><span>VCS → Update Project → ok</span></li><li><span>跳出一个对话框: Conflicts → Merge</span></li><li><span>It shows yours (left) &amp; your teammates (right) code. 中间是base version.</span></li><li><span>改完以后点击apply</span></li><li><span>Commit时，弹出窗口中右键点击不能（或不需要）</span></li><li><span>commit的文件，选择ignore</span></li></ul></li><li><h5><a name="what-gitignore-is-for" class="md-header-anchor"></a><span>what .gitignore is for？</span></h5><ul><li><span>Lists file types to exclude from Git: Ensures only the right kind of files are added. </span></li></ul></li><li><h5><a name="what-is-a-tag" class="md-header-anchor"></a><span>what is a tag?</span></h5><ul><li><p><span>Mark certain versions of certain files as a group. </span></p><ul><li><span>ex: &quot;Files for Version 1.0 of produce&quot;.</span></li></ul></li><li><p><span>Able to easily checkout these exact version of the files later to fix bugs etc. </span></p></li></ul></li><li><h5><a name="good-commit-message" class="md-header-anchor"></a><span>Good commit message</span></h5><ul><li><p><span>Line 1: Short summary (&lt;70 characters)</span></p><ul><li><span>Capitalize your statement</span></li><li><span>Use imperative: &quot;Fix bug ...&quot; vs &quot;fixed&quot; or &quot;fixes&quot;</span></li></ul></li><li><p><span>Line 2: Blank</span></p></li><li><p><span>Line 3: Details; wrap your text ~70 characters. </span></p></li><li><p><span>If pair programming, add pair&#39;s user ID at start: &quot;[pair: Xianxian] Make game state persist ...&quot;</span></p></li></ul></li><li><h5><a name="how-to-revert-changes-in-a-file-with-git-还原" class="md-header-anchor"></a><span>how to revert changes in a file with Git? 还原</span></h5><ul><li><p><span>&#39;git checkout&#39; to revert files</span></p><ul><li><span>Discards any uncommitted changes to a file. </span></li><li><span>Overwrite file in working directory with one from local repo. </span></li></ul></li><li><p><span>Revert with Caution</span></p><ul><li><span>will lose all uncommitted changes in the file. </span></li><li><span>normally Git does not let you lose changes. </span></li><li><span>if in doubt, grab a backup copy (ZIP your folder) then revert. </span></li></ul></li></ul></li><li><h5><a name="lock-edit-unlock-andvs-checkout-edit-merge" class="md-header-anchor"></a><span>lock-edit-unlock and/vs checkout-edit-merge</span></h5><ul><li><p><span>Lock-Edit-Unlock</span></p><ul><li><span>Locking prevents merge conflicts by preventing others from changing the file. </span></li><li><span>Adds pressure to make changes quickly error prone. </span></li></ul></li><li><p><span>Checkout-Edit-Merge</span></p><ul><li><span>Merge support allows concurrent access to a file so multiple developers can work on same code at once. </span></li><li><span>But can lead to merge conflicts. </span></li></ul></li></ul></li><li><h5><a name="atomic-operations-自动操作" class="md-header-anchor"></a><span>atomic operations 自动操作</span></h5><ul><li><span>No part of a change occurs unless the whole change does. </span></li><li><span>Change is applied all at once: no other changes applied while you&#39;re checking in.</span></li></ul></li><li><h5><a name="minimum-requirement-to-committing-code" class="md-header-anchor"></a><span>Minimum requirement to committing code</span></h5><ul><li><span>Don&#39;t break the build!</span></li><li><span>When you check in, the full system must compile and run. </span></li><li><span>Only under exceptional circumstances should you ever check in something which breaks the build. </span></li></ul></li><li><h5><a name="expected-commit-frequency" class="md-header-anchor"></a><span>Expected commit frequency</span></h5><ul><li><span>Commit little changes to local repo very often (~hourly).</span></li><li><span>Once some work is more stable, push all the changes at once to remote repo (~daily).</span></li></ul></li><li><h5><a name="the-three-points-about-how-coding-with-source-control-is-different-and-why" class="md-header-anchor"></a><span>the three points about how coding with source control is different, and why?</span></h5><ul><li><p><span>Don&#39;t write journals in comments in source code. </span></p><ul><li><span>Make the file size as small as possible. </span></li></ul></li><li><p><span>Don&#39;t leave dead code. </span></p><ul><li><span>Leaving dead code in is an obstacle to programmer understanding and action. </span></li><li><span>There&#39;s the risk that the code is awakened which can cause significant problems. </span></li></ul></li><li><p><span>Don&#39;t sign your code.</span></p><ul><li><span>Nobody care who wrote this code. </span></li></ul></li></ul></li></ul><h2><a name="3-testing" class="md-header-anchor"></a><span>3-Testing</span></h2><ul><li><h5><a name="white-box-vs-black-box-testing-able-to-discuss-benefits-of-each" class="md-header-anchor"></a><span>white box vs. black box testing; (able to discuss benefits of each)</span></h5><ul><li><p><span>White Box Testing</span></p><ul><li><span>can see source code when writing tests. </span></li><li><span>also called clear box or glass box.</span></li><li><span>benefit: knowing the code can help you make better, more complete tests.</span></li></ul></li><li><p><span>Black Box Testing</span></p><ul><li><span>have no access to system internals.</span></li><li><span>Often for user interface testing. </span></li><li><span>benefit: not knowing the code can help you see the big picture and find incorrect assumptions in code. </span></li></ul></li></ul></li><li><h5><a name="what-is-acceptance-testing" class="md-header-anchor"></a><span>What is Acceptance Testing?</span></h5><ul><li><span>Acceptance testing tests product from customer&#39;s perspective. </span></li><li><span>&quot;Are needed features included?&quot;</span></li><li><span>&quot;Do the features work as expected?&quot;</span></li></ul></li><li><h5><a name="how-to-generate-acceptance-test" class="md-header-anchor"></a><span>How to generate acceptance test?</span></h5><ul><li><span>Can generate acceptance tests from user&#39;s requirement. </span></li></ul></li><li><h5><a name="how-acceptance-testing-be-performed" class="md-header-anchor"></a><span>How Acceptance Testing be performed?</span></h5><ul><li><p><span>Acceptance tests often manually done by a tester. </span></p><ul><li><span>writing test cases and scripts based on business and functional requirements. </span></li><li><span>Executing high complexity testing tasks. </span></li><li><span>Recording and reporting task results. </span></li><li><span>Proactively(积极地) working with project team members to improve the quality of project deliverables(可交付成果). </span></li></ul></li></ul></li><li><h5><a name="alpha-and-beta-testing" class="md-header-anchor"></a><span>Alpha and Beta testing</span></h5><ul><li><span>Alpha testing - users try out software at developer&#39;s site. </span></li><li><span>Beta testing - software deployed for limited initial testing at customer&#39;s site. </span></li></ul></li><li><h5><a name="usual-content-of-a-bug-report" class="md-header-anchor"></a><span>usual content of a bug report</span></h5><figure><table><thead><tr><th><span>Bug Report Component</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Summary</span></td><td><span>Concise(简洁), 1 line description of problem.</span></td></tr><tr><td><span>Component</span></td><td><span>Which product had error</span></td></tr><tr><td><span>Steps to reproduce the problem</span></td><td><span>Actions to cause error. Does it always occur, or only occasionally? Create simple example to demonstrate.</span></td></tr><tr><td><span>Expected vs. Actual result</span></td><td><span>What the steps should do, vs. what actually do. Ensure it is actually an error not a feature: &quot;Working as intended&quot;?</span></td></tr><tr><td><span>Environment</span></td><td><span>Software version, OS, hardware, drivers, ...</span></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure></li><li><h5><a name="life-cycle-of-a-bug" class="md-header-anchor"></a><span>Life-cycle of a bug</span></h5><ul><li><span>New -&gt; Assign -&gt; Resolved -&gt;Reopened / Verified -&gt; Closed</span></li></ul></li><li><h5><a name="possible-solutions" class="md-header-anchor"></a><span>Possible solutions</span></h5><ul><li><span>Fixed</span></li><li><span>Duplicate</span></li><li><span>Won&#39;t fix</span></li><li><span>Cannot reproduce (无法复制)</span></li><li><span>Working as intended (按预期工作)</span></li><li><span>Enhancement / feature request (增强 / 功能需求)</span></li></ul></li><li><h5><a name="what-is-a-unit-test" class="md-header-anchor"></a><span>What is a Unit Test? </span></h5><ul><li><span>Unit tests test a class in isolation.</span></li></ul></li><li><h5><a name="unit-test-purpose" class="md-header-anchor"></a><span>Unit Test Purpose?</span></h5><ul><li><span>For you to &quot;know&quot; your code works. </span></li><li><span>Should test ~100% of a class. </span></li><li><span>Helps improve quality of code. </span></li><li><span>Supports aggressive refactoring because you can quickly check your code is correct. </span></li></ul></li><li><h5><a name="purpose-of-the-test-runner" class="md-header-anchor"></a><span>Purpose of the test runner?</span></h5><ul><li><span>JUnit test runner executes your test class. </span></li></ul></li><li><h5><a name="how-a-test-runner-executes-tests" class="md-header-anchor"></a><span>How a test runner executes tests?</span></h5><ul><li><span>JUnit: &quot;Test Runner&quot; executes all methods with @Test annotation.(测试运行程序执行带有测试注释的方法)</span></li><li><span>Tests are doing using JUnit&#39;s asserts</span></li></ul></li><li><h5><a name="green-bar" class="md-header-anchor"></a><span>Green bar</span></h5><ul><li><span>all tests successful.</span></li></ul></li><li><h5><a name="red-bar" class="md-header-anchor"></a><span>Red bar</span></h5><ul><li><span>at least one of the test cases fails.</span></li></ul></li><li><h5><a name="how-to-write-a-junit5-test" class="md-header-anchor"></a><span>How to write a JUnit5 test?</span></h5><ul><li><pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="java" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="java"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 40px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 36px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -36px; width: 36px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 28px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">@Test</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">testCreate</span>(){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">Puppy</span> <span class="cm-variable">rover</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Puppy</span>(<span class="cm-string">"Rover"</span>, <span class="cm-number">100</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">assertEquals</span>(<span class="cm-string">"Rover"</span>, <span class="cm-variable">rover</span>.<span class="cm-variable">getName</span>());</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-3">int</span> <span class="cm-variable">i</span><span class="cm-operator">=</span><span class="cm-number">10</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">assertTrue</span>(<span class="cm-variable">i</span><span class="cm-operator">==</span><span class="cm-number">10</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">assertFalse</span>(<span class="cm-variable">i</span><span class="cm-operator">==-</span><span class="cm-number">5</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//throws used to test exception throwing, test fails unless it throws IllegalArgumentException.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 28px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">@Test</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">testThrows</span>(){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">assertThrows</span>(<span class="cm-variable">IllegalArgumentException</span>.<span class="cm-keyword">class</span>,)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">//Ignore the test so "to-be-done" style tests do not break testing.</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 28px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">@Disable</span>(<span class="cm-string">"DB does not yet support reconnecting."</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 28px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 374px;"></div><div class="CodeMirror-gutters" style="height: 374px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 36px;"></div></div></div></div></pre></li></ul></li><li><h5><a name="steps-in-android-studio-to-add-tests-to-a-class-and-run-test" class="md-header-anchor"></a><span>steps in Android Studio to add tests to a class and run test</span></h5><ol start='' ><li><p><span>Create JUnit Test Class:</span></p><ol start='' ><li><span>Open class under test</span></li><li><span>click class name, alt-enter -&gt; create test</span></li><li><span>select JUnit 5, click OK</span></li><li><span>Select “...\app\src\test\java\folder”</span></li></ol></li><li><p><span>Execute test:</span></p><ol start='' ><li><span>Run -&gt; Run ... (alt-shift-F10)</span></li><li><span>Select your JUnit test class.</span></li></ol></li><li><p><span>Run app: Run -&gt; Run...; select &quot;app&quot;</span></p></li></ol></li><li><h5><a name="partition-testing--equivalence-partitions" class="md-header-anchor"></a><span>Partition testing &amp; Equivalence partitions</span></h5><ul><li><p><span>Partition testing </span></p><ul><li><span>identify groups, or regions of values in the input and output results with should behave similar. </span></li></ul></li><li><p><span>Equivalence class / Equivalence partitions</span></p><ul><li><span>program behaves in an equivalent way for each group member. </span></li></ul></li></ul></li><li><h5><a name="general-testing-guidelines" class="md-header-anchor"></a><span>General testing guidelines</span></h5><ul><li><p><span>Choose test inputs to </span></p><ul><li><p><span>generate all error messages. </span></p></li><li><p><span>cause buffers to overflow; (缓存区溢出)</span></p></li><li><p><span>force calculation result to be too large (or small): overflow or underflow. </span></p></li><li><p><span>Testing with arrays:</span></p><ul><li><span>Different numbers of elements. Ex: 0, 1, 2, 100, 32000 ...</span></li><li><span>Put desired element first, last, middle. </span></li></ul></li></ul></li></ul></li><li><h5><a name="code-coverage" class="md-header-anchor"></a><span>Code coverage</span></h5><ul><li><span>% of class under test&#39;s lines executed by tests. </span></li><li><span>want ~100% code coverage: all lines of code executed at least once. </span></li></ul></li><li><h5><a name="how-to-check-code-coverage-in-as" class="md-header-anchor"></a><span>How to check code coverage (in AS)?</span></h5><ul><li><span>Run -&gt; Run PuppyTest with Coverage</span></li></ul></li><li><h5><a name="why-is-it-important-that-test-code-be-held-to-same-quality-standard-as-production-code-为什么将测试代码保持与生产代码相同的质量标准很重要" class="md-header-anchor"></a><span>Why is it important that test code be held to same quality standard as production code? (为什么将测试代码保持与生产代码相同的质量标准很重要？)</span></h5><ul><li><p><span>Unit tests are integral part software development.</span></p></li><li><p><span>Good code quality makes maintenance easier</span></p><ul><li><span>keeps tests current and relevant</span></li><li><span>poor code makes tests obsolete(过时) fast (and useless)!</span></li><li><span>unreliable tests cause developers to lose trust. </span></li></ul></li></ul></li><li><h5><a name="what-to-do-if-a-routine-is-unusually-buggy" class="md-header-anchor"></a><span>What to do if a routine is unusually buggy. </span></h5><ul><li><span>If you find a function which is quite buggy, don&#39;t debug it, rewrite the function!</span></li></ul></li></ul><h3><a name="4-software-processes-软件流程" class="md-header-anchor"></a><span>4-Software Processes 软件流程</span></h3><ul><li><h5><a name="what-is-a-software-process" class="md-header-anchor"></a><span>What is a software process?</span></h5><ul><li><span>A structured set of activities required to develop a software system. </span></li></ul></li><li><h5><a name="4-software-process-activities" class="md-header-anchor"></a><span>4 software process activities</span></h5><ul><li><strong><span>Specification</span></strong><span> - what will the system do?</span></li><li><strong><span>Design &amp; implementation</span></strong><span> - how will it do this? Actually make it work.</span></li><li><strong><span>Validation</span></strong><span> - does it do what the customer wants?</span></li><li><strong><span>Evolution</span></strong><span> - change system to meet customer&#39;s changing needs. </span></li></ul></li><li><h5><a name="steps-in-the-software-specification-overview" class="md-header-anchor"></a><span>steps in the &quot;Software Specification&quot; overview</span></h5><ul><li><p><strong><span>software specification</span></strong><span> establish what services are required and constraints on the system&#39;s operation and development. </span></p><p><img src="img/softwarespecification.PNG" /></p></li></ul></li><li><h5><a name="the-basic-process-to-get-from-system-specification-to-an-executable-system" class="md-header-anchor"></a><span>The basic process to get from system specification to an executable system.</span></h5><ul><li><span>system specification --(software design)-&gt; software structure --(implementation)-&gt; executable system</span></li></ul></li><li><h5><a name="different-design-activities" class="md-header-anchor"></a><span>different design activities</span></h5><ul><li><span>architectural design - identify overall structure of the system &amp; principle components: sub-systems or modules.</span></li><li><span>UI design - layout initial ideas for user interface (UI).</span></li><li><span>component design - design each system component</span></li><li><span>database design - design the system&#39;s data structures and database</span></li></ul></li><li><p><span>3 testing stages</span></p><ul><li><span>component testing(组件测试) - individual functions or objects are tested independently. May test coherent groupings of objections. </span></li><li><span>system testing (系统测试) - Testing of system as a whole. Testing of emergent properties is particularly important. </span></li><li><span>Acceptance testing (认可测试) - Testing with customer data to check that system meets customer&#39;s needs. </span></li></ul></li><li><h5><a name="planning-paradigms-规划范式" class="md-header-anchor"></a><span>Planning Paradigms 规划范式</span></h5><ul><li><p><span>Plan-driven processes: </span></p><ul><li><span>All process activities are planned in advance. </span></li><li><span>Progress is measured against this plan. (进度是根据该计划衡量的)</span></li><li><span>also called Big Design Up Front (BDUF). (预先做大量的设计)</span></li></ul></li><li><p><span>Agile processes: </span></p><ul><li><span>Planning is incremental</span></li><li><span>Easier to change the process to reflect changing customer requirements. </span></li></ul></li></ul></li><li><h5><a name="software-delivery-timing-options" class="md-header-anchor"></a><span>software delivery (timing) options</span></h5><ul><li><p><span>single delivery (at end)</span></p><ul><li><span>software only delivered to customer once it;s fully completed. </span></li></ul></li><li><p><span>incremental delivery</span></p><ul><li><span>customer is given incomplete versions of the software throughout development. </span></li></ul></li></ul></li><li><h5><a name="waterfall-model" class="md-header-anchor"></a><span>waterfall model</span></h5><ul><li><span>Plan-driven model - separate and distinct phases of specification and development. </span></li></ul></li><li><h5><a name="waterfall-model-phases" class="md-header-anchor"></a><span>waterfall model phases</span></h5><ul><li><span>requirements difinetion</span></li><li><span>system and software design</span></li><li><span>implementation and unit testing </span></li><li><span>integration and system testing </span></li><li><span>operation and maintenance</span></li></ul></li><li><h5><a name="waterfall-models-ability-to-cope-with-change" class="md-header-anchor"></a><span>waterfall model&#39;s ability to cope with change.</span></h5><ul><li><span>inflexible stages make it difficult to meet changing customer requirements. </span></li><li><span>must complete phase N before starting phase N+1.</span></li><li><span>waterfall model is (somewhat) appropriate when requirements are well-understood and change is limited. </span></li><li><span>Plan-driven nature of the waterfall model helps coordinate the work. However, waterfall is so rigid it is virtually never used as a full methodology.</span></li></ul></li><li><h5><a name="incremental-development" class="md-header-anchor"></a><span>incremental development</span></h5><ul><li><span>specification, development and validation are interleaved. </span></li></ul></li><li><h5><a name="how-incremental-development-can-be-used-by-either-paradigm" class="md-header-anchor"></a><span>how incremental development can be used by either paradigm?</span></h5><ul><li><span>Plan driven models - functionality of increments are planned in advance. </span></li><li><span>agile models - functionality of early increments are planned, later increments are driven by customer&#39;s needs. </span></li></ul></li><li><h5><a name="benefits-of-incremental-development" class="md-header-anchor"></a><span>benefits of incremental development</span></h5><ul><li><p><span>reduced cost from changing customer requirements - not as much code (plan?) written that must change. </span></p></li><li><p><span>Quick delivery of useful software.</span></p><ul><li><span>easier to get customer feedback on working software rather than paper designs. </span></li><li><span>customer uses and gains value from the software earlier than with a single end delivery process. </span></li></ul></li></ul></li><li><h5><a name="drawback-to-incremental-development" class="md-header-anchor"></a><span>drawback to incremental development</span></h5><ul><li><p><span>code rot 代码腐烂</span></p><ul><li><span>regular change tends to corrupt system&#39;s structure. (定期更改往往会破坏结构)</span></li><li><span>incorporating code changes becomes increasingly difficult and costly. </span></li><li><span>time and money must be spent refactoring to improve the software. </span></li></ul></li></ul></li><li><h5><a name="refactoring" class="md-header-anchor"></a><span>refactoring</span></h5><ul><li><p><span>refactoring improves the code without adding new feature. </span></p></li><li><p><span>ex:</span></p><ul><li><span>rename a poorly named variable</span></li><li><span>split huge function into smaller ones</span></li><li><span>improve OOD (object oriented design)</span></li><li><span>fixing parts of the code which have poor code quality or poor readability.</span></li></ul></li></ul></li></ul><h3><a name="5-change-risk" class="md-header-anchor"></a><span>5-Change risk</span></h3><ul><li><h5><a name="why-change-is-inevitable" class="md-header-anchor"></a><span>why change is inevitable?</span></h5><ul><li><p><span>change is inevitable in all large software projects:</span></p><ul><li><span>business changes lead to new (or changed) system requirements. </span></li><li><span>new technologies oped up new possibilities. </span></li></ul></li></ul></li><li><h5><a name="cost-of-change" class="md-header-anchor"></a><span>cost of change</span></h5><ul><li><span>cost of change = cost of reworking completed work (re-analyzing requirements, design, recoding) + cost of implementing new functionality.</span></li></ul></li><li><h5><a name="change-avoidance-避免变更" class="md-header-anchor"></a><span>change avoidance 避免变更</span></h5><ul><li><span>software development process include activities to anticipate(预料) possible changes before significant rework is required. </span></li><li><span>waterfall</span></li></ul></li><li><p><span>ex: develop a prototype system to show a key (uncertain?) feature to customers. </span></p></li><li><h5><a name="change-tolerance-改变容忍度" class="md-header-anchor"></a><span>change tolerance 改变容忍度</span></h5><ul><li><span>software development process is designed to accommodate changes at lower cost. 软件开发过程旨在以较低的成本适应变化。</span></li><li><span>usually incremental development</span></li><li><span>changes may be in a future increment (no rework), or may have to alter part of the existing system. </span></li></ul></li><li><h4><a name="throwaway-software-prototyping-一次性软件原型" class="md-header-anchor"></a><span>Throwaway software prototyping 一次性软件原型</span></h4></li><li><h5><a name="when-and-how-it-is-used" class="md-header-anchor"></a><span>When and how it is used?</span></h5><ul><li><span>A test implementation of the system used to try out options. 用于试用选项的系统的测试实现。</span></li></ul></li><li><h5><a name="what-can-be-ignored" class="md-header-anchor"></a><span>What can be ignored?</span></h5><ul><li><span>prototypes could ignore things like code quality, error-handling, or testability. </span></li></ul></li><li><h5><a name="why-is-it-a-throwaway" class="md-header-anchor"></a><span>Why is it a throwaway?</span></h5><ul><li><span>Throwaway code not a basis for the system. </span></li><li><span>built to answer a specific question, not to see if the whole system will work.</span></li></ul></li><li><h5><a name="how-it-avoids-change" class="md-header-anchor"></a><span>How it avoids change?</span></h5><ul><li><p><span>prototypes leave out some functionality</span></p><ul><li><p><span>focus on poorly understood areas of the product; </span></p></li><li><p><span>error checking and recovery may be omitted. </span></p></li><li><p><span>focus on functional rather than non-functional requirements. </span></p><p><span>(functional: accessing hardware, screen layouts, database access.)</span></p><p><span>(non-functional: security, performance, etc.)</span></p></li></ul></li></ul></li><li><h5><a name="the-ways-throwaway-software-prototyping-improves-a-system" class="md-header-anchor"></a><span>The ways Throwaway software prototyping improves a system</span></h5><ul><li><span>improved system usability.</span></li><li><span>a closer match to users&#39; real needs.</span></li><li><span>improved design quality.</span></li><li><span>improved maintainability. </span></li><li><span>reduced development effort. </span></li></ul></li></ul><h4><a name="incremental-delivery" class="md-header-anchor"></a><span>Incremental delivery</span></h4><ul><li><h5><a name="when-and-how-it-is-used" class="md-header-anchor"></a><span>When and how it is used?</span></h5><ul><li><p><span>Development and delivery are broken down into increments: each increment delivers some required functionality. </span></p></li><li><p><span>Prioritized user requirements - highest priority ones included in early increments. </span></p></li><li><p><span>Requirement changes</span></p><ul><li><span>once the development of an increment is started, the requirements are frozen. </span></li><li><span>requirements for later increments continue to evolve. </span></li></ul></li></ul></li><li><h5><a name="use-of-incremental-development" class="md-header-anchor"></a><span>use of incremental development</span></h5><ul><li><span>develop the system in increments. </span></li><li><span>customer evaluates incremental before proceeding to development of next increment; </span></li><li><span>Normal approach used in agile methods.</span></li></ul></li><li><h5><a name="benefits-of-incremental-development" class="md-header-anchor"></a><span>benefits of incremental development</span></h5><ul><li><span>new functionality delivered with each increment so system functionality is available earlier. </span></li><li><span>early increments act like a prototype to help elicit(引出) requirements for later increments.</span></li><li><span>lower risk of overall project failure. </span></li><li><span>highest priority requirements implemented first and receive the most testing. </span></li></ul></li><li><h5><a name="incremental-delivery" class="md-header-anchor"></a><span>incremental delivery</span></h5><ul><li><span>deploy an increment for use by end-users;</span></li><li><span>more realistic evaluation because of practical use; </span></li><li><span>difficult to implement for replacement systems as increments have less functionality than old system.</span></li></ul></li><li><h5><a name="incremental-delivery-cycle" class="md-header-anchor"></a><span>incremental delivery cycle</span></h5><ul><li><span>start -&gt; plan the increment -&gt; develop the increment -&gt; validate the increment -&gt; deploy the increment -&gt; final system delivered.</span></li></ul></li><li><h5><a name="incremental-delivery-problems" class="md-header-anchor"></a><span>incremental delivery problems</span></h5><ul><li><p><span>common functionality</span></p><ul><li><span>most systems require a set of basic facilities that are used by different parts of the system.</span></li><li><span>hard to identify common facilities because requirements are not defined in detail until an increment is to be implemented. </span></li></ul></li><li><p><span>contracts</span></p><ul><li><span>specification developed iteratively with the software. </span></li><li><span>complete system specification can be needed as part of the system development contract.</span></li></ul></li></ul></li></ul><h3><a name="6-scrum---an-agile-process" class="md-header-anchor"></a><span>6-Scrum - an Agile Process</span></h3><ul><li><h5><a name="4-changes-listed-between-agile-and-bduf" class="md-header-anchor"></a><span>4 changes listed between Agile and BDUF. </span></h5><ul><li><span>Document as you go; only as needed</span></li><li><span>Deliver product early and often</span></li><li><span>Plan as you go: not just at the start of the project</span></li><li><span>Test as you go: not just at the end of project</span></li></ul></li><li><h5><a name="backlog--user-stories---list-of-feature-requests" class="md-header-anchor"></a><span>backlog / user stories - list of feature requests.</span></h5><ul><li><span>highest priority features (&quot;stories&quot;) at top of backlog. </span></li><li><span>team picks stories to complete from top of backlog.</span></li></ul></li><li><h5><a name="iteration---a-week-or-2-3-where-team-commits-to-deliver-some-user-stories" class="md-header-anchor"></a><span>iteration - a week (or 2-3) where team commits to deliver some user stories. </span></h5><ul><li><span>At end of iteration, team delivers working software. </span></li><li><span>customer then tries out software &amp; gives feedback</span></li><li><span>use feedback to plan next iteration.</span></li></ul></li><li><h5><a name="product-owner" class="md-header-anchor"></a><span>Product Owner </span></h5><ul><li><p><span>(may not write code, but look what product should do)</span></p></li><li><p><span>Keeper of product vision.</span></p><ul><li><span>understands needs of the customer</span></li><li><span>works closely with the stakeholders to determine what needs to be built, and feature priorities. </span></li></ul></li><li><p><span>Manages backlog 管理积压</span></p><ul><li><span>adds new feature requests</span></li><li><span>prioritizes features: directs the team towards most valued work.</span></li></ul></li><li><p><span>Responsibility: to maximize value to the business. </span></p></li></ul></li><li><h5><a name="scrum-master" class="md-header-anchor"></a><span>Scrum Master</span></h5><ul><li><p><span>The coach</span></p><ul><li><span>guides team towards more cohesion, self-organizing,performance</span></li><li><span>scrum master&#39;s deliverable is the self-organizing team. </span></li></ul></li><li><p><span>Not the boss, is a trusted advisor, and team-advocate</span></p><ul><li><span>pushes decision making back to team</span></li><li><span>removes impediments(障碍) (ex: getting equipment)</span></li><li><span>expert on scrum process; facilitates meetings. </span></li></ul></li><li><p><span>Responsibility: a well functioning agile team. </span></p></li></ul></li><li><h5><a name="team-member" class="md-header-anchor"></a><span>Team Member</span></h5><ul><li><p><span>Teams are collaborative, self-organizing</span></p><ul><li><span>have total authority over how to get work done.</span></li><li><span>estimates work for each feature</span></li><li><span>7 +/- team members</span></li></ul></li><li><p><span>Responsibility: Delivering stories that the team committed to. </span></p><ul><li><span>no singled out &quot;experts&quot;; everyone does what is needed for this iteration. </span></li><li><span>no &quot;silos of knowledge&quot;(没有知识的荒岛), team members should share knowledge. </span></li></ul></li></ul></li><li><h5><a name="repository-manager" class="md-header-anchor"></a><span>Repository Manager</span></h5><ul><li><p><span>not part of normal Scrum; added as part of a GitLab development work-flow. </span></p></li><li><p><span>accepts merge requests when they are ready. </span></p><ul><li><span>Helps resolve Git problems.</span></li><li><span>Helps enforce code quality. </span></li></ul></li><li><p><span>Responsibility: ensures team&#39;s process is followed to commit code. </span></p><ul><li><span>It must meet coding style; have unit tests, system pass all unit tests, code reviewed, etc.</span></li></ul></li></ul></li></ul><h4><a name="sprint-ceremonies" class="md-header-anchor"></a><span>Sprint Ceremonies</span></h4><ul><li><h5><a name="what-is-a-sprint" class="md-header-anchor"></a><span>what is a sprint?</span></h5><ul><li><span>Sprint is Scrum&#39;s iterations.</span></li></ul></li><li><h5><a name="sprint-planning-2hr" class="md-header-anchor"></a><span>Sprint Planning [2hr]</span></h5><ul><li><p><span>Team pick what stories to commit to this iteration</span></p><ul><li><span>Backlog must be well maintained: Each story has a &quot;size&quot; estimate. </span></li></ul></li><li><p><strong><span>Velocity</span></strong><span>: amount of work a team finished last iteration. </span></p><ul><li><span>Team generally picks to do as much work this iteration as they completed last iteration.</span></li><li><span>Self correcting to become accurate at predicting performance.</span></li></ul></li></ul></li><li><h5><a name="stand-up-meeting-15min" class="md-header-anchor"></a><span>Stand-Up Meeting [15min]</span></h5><ul><li><p><span>Daily. Only team members. Brief. </span></p></li><li><p><span>Each team member briefly answers: （3 questions to answer in a daily stand-up）</span></p><ol start='' ><li><span>What I accomplished since the last stand-up</span></li><li><span>what I expect to accomplish by next stand-up</span></li><li><span>what obstacles are slowing me down.</span></li></ol></li><li><p><span>Benefit: (benefit of the stand-up)</span></p><ul><li><span>If &quot;accomplished&quot; &lt; yesterday&#39;s expected, then we know we are slipping.</span></li><li><span>Others jump in with brief, &quot;I can help you with that&quot;; but no long discussions of the details. </span></li></ul></li><li><p><span>Scrum master facilitates meeting, takes notes.</span></p></li></ul></li><li><h5><a name="sprint-review-30min" class="md-header-anchor"></a><span>Sprint Review [30min]</span></h5><ul><li><p><span>Demonstrate working software to stakeholders. </span></p><ul><li><span>Report on stories that did not get finished. </span></li></ul></li><li><p><span>Product owner gathers feedback from stakeholders:</span></p><ul><li><span>new feature requests or changes</span></li><li><span>clarifies priorities</span></li></ul></li><li><p><span>Make no promises!</span></p></li></ul></li><li><h5><a name="retrospective-回顾-15hr" class="md-header-anchor"></a><span>Retrospective 回顾 [1.5hr]</span></h5><ul><li><p><span>Goals</span></p><ul><li><span>identify one or two specific things to improve</span></li><li><span>create an action plan to implement those changes</span></li></ul></li><li><p><span>Team reviews what happened during iteration</span></p><ul><li><span>generates insights into what happened (no finger pointing).</span></li><li><span>choose 1-2 specific improvements. </span></li></ul></li><li><p><span>Appreciate each other&#39;s work. 互吹？</span></p></li></ul></li></ul><h4><a name="estimation" class="md-header-anchor"></a><span>Estimation</span></h4><ul><li><h5><a name="what-is-story-points" class="md-header-anchor"></a><span>what is story points?</span></h5><ul><li><span>Story points are assigned points to tasks, such as give one point to a log-in screen. </span></li><li><span>Scrum estimates work in terms of relative &quot;story points&quot;.</span></li><li><span>left-most story = 1 point.</span></li><li><span>assign thresholds for points at Fibonacci numbers (1,2,3,5,8,13,21,34,...)</span></li></ul></li><li><h5><a name="why-better-than-estimates-in-hours" class="md-header-anchor"></a><span>Why better than estimates in hours?</span></h5><ul><li><span>Points not based on hours, as this is hard to give absolute estimate, but based on effort: more consistent.</span></li></ul></li><li><h5><a name="estimation-game" class="md-header-anchor"></a><span>estimation game</span></h5><ol start='' ><li><p><span>Pin up-coming stories to wall, ordering by size. </span></p><ul><li><p><span>Each team member takes turns doing one of:</span></p><ul><li><span>pick up a new story up where they think best</span></li><li><span>Move a story that&#39;s up to improve order</span></li><li><span>Pass (if no changes needed)</span></li></ul></li></ul></li><li><p><span>Team decides how many points each story is. </span></p></li><li><p><span>Done!</span></p><ul><li><span>Whole team agrees on the estimates!</span></li></ul></li></ol></li></ul><h3><a name="7-git-process" class="md-header-anchor"></a><span>7-Git Process</span></h3><h4><a name="feature-branches" class="md-header-anchor"></a><span>(feature) branches</span></h4><ul><li><h5><a name="what-is-a-gitlab-issue" class="md-header-anchor"></a><span>What is a GitLab issue?</span></h5><ul><li><span>GitLab tracks issues: bug reports and feature requests.</span></li></ul></li><li><h5><a name="why-to-use-it" class="md-header-anchor"></a><span>Why to use it?</span></h5><ul><li><span>Use as product&#39;s backlog 用作产品的待办事项</span></li><li><span>Assign issue to a dev to show who&#39;s working on it. </span></li><li><span>Update issue with extra info as needed</span></li></ul></li><li><h5><a name="how-to-create-an-issue" class="md-header-anchor"></a><span>How to create an issue? </span></h5><ul><li><span>项目左侧边栏找到 Issues → Boards, assign it to yourself.</span></li></ul></li><li><h5><a name="how-to-create-a-branch" class="md-header-anchor"></a><span>How to create a branch?</span></h5><ul><li><span>项目左侧边栏：Repository → Branches → new branch</span></li></ul></li><li><h5><a name="why-a-feature-branch-is-better-than-committing-directly-to-master" class="md-header-anchor"></a><span>Why a feature branch is better than committing directly to master?</span></h5><ul><li><p><span>Chaotic commits 混乱提交</span></p><ul><li><span>Too chaotic to have many teammates constantly committing code to master. </span></li></ul></li><li><p><span>Branch (Feature Branch)</span></p><ul><li><span>Do work on separate track (the branch) from Master</span></li><li><span>Commit changes to your branch</span></li><li><span>When feature is ready, merge branch back to Master. </span></li></ul></li></ul></li><li><h5><a name="the-workflow-for-working-with-an-issue-and-branch" class="md-header-anchor"></a><span>The workflow for working with an issue and branch</span></h5><ul><li><p><span>GL: Pick an issue to implement &amp; create branch.</span></p></li><li><p><span>AS: Checkout branch, make changes, commit &amp; push changes to the branch. </span></p><p><span>When feature is ready</span></p></li><li><p><span>AS: Merge Master to Feature branch (resolving conflicts); commit/push changes. </span></p></li><li><p><span>GL: Create merge request to merge branch to Master. </span></p></li><li><p><span>GL: Branch is deleted when merge request accepted. (manually remove merged local branch)</span></p></li></ul></li><li><h5><a name="what-the-rest-of-the-team-can-do-with-your-merge-request-once-created" class="md-header-anchor"></a><span>what the rest of the team can do with your merge request once created? </span></h5><ul><li><p><span>Team members see merge requests: </span></p><ul><li><span>code review: Comment on problems they see in the code (possibly leading to new commits to fix)</span></li><li><span>Thumbs-up/down for voting</span></li></ul></li><li><p><span>Repo manager accepts merge request:</span></p><ul><li><p><span>accepting merge requests will: </span></p><ul><li><span>merge code to master (should be no conflicts)</span></li><li><span>closes associated issue (if any)</span></li><li><span>delete the source branch [optional; good practice to clean up]</span></li></ul></li></ul></li></ul></li></ul><h3><a name="8-agile" class="md-header-anchor"></a><span>8-Agile</span></h3><ul><li><h5><a name="whats-the-inspiration-for-agile-method" class="md-header-anchor"></a><span>What&#39;s the inspiration for agile method?</span></h5><ul><li><span>inspired by dissatisfaction with overheads in plan-driven software methods. </span></li></ul></li><li><h5><a name="4-values-of-the-agile-manifesto-敏捷宣言" class="md-header-anchor"></a><span>4 values of the Agile Manifesto (敏捷宣言)？</span></h5><ul><li><p><u><span>Individuals and interactions</span></u><span> over processes and tools.</span></p><ul><li><span>15min stand-up meeting, everyone to share their own idea. </span></li></ul></li><li><p><u><span>Working software</span></u><span> over comprehensive documentation. </span></p><ul><li><span>we can not adopt it if we don&#39;t know if it&#39;s working. </span></li><li><span>even software has changed, documentation does not need to change. </span></li></ul></li><li><p><u><span>Customer collaboration</span></u><span> over contract negotiation</span></p><ul><li><span>customer needs adopted, but may change. Rather than negotiated at front, we  through collaboration to think what they need and adopt it. </span></li></ul></li><li><p><u><span>Responding to change</span></u><span> over following a concrete plan. </span></p><ul><li><span>if a project is behind plan, reduce requirements or everyone work overtime. </span></li></ul></li></ul></li><li><h5><a name="how-scrum-applies-inspect-and-adapt" class="md-header-anchor"></a><span>How Scrum applies Inspect and Adapt?</span></h5><ol><li><span>Daily stand-up: for the sprint; - keep on track</span></li><li><span>Sprint demo: for the product; - ensure most valuable features being added. </span></li><li><span>Retrospective(回顾): for the team; - continues improvement to the team. </span></li></ol></li><li><h5><a name="5-principles-of-agile-methods" class="md-header-anchor"></a><span>5 principles of agile methods</span></h5><ul><li><p><span>customer involvement</span></p><ul><li><span>Customer is closely involved throughout development. They provide and prioritize new system requirements and evaluate the iterations of the system. </span></li></ul></li><li><p><span>Incremental delivery</span></p><ul><li><span>Software developed in increments. Customer specifies requirements to be included in each increment. </span></li></ul></li><li><p><span>People, not process</span></p><ul><li><span>Recognize and exploit development team&#39;s skills. Team members should be left to develop their own ways of working without prescriptive processes. </span></li></ul></li><li><p><span>Embrace change </span></p><ul><li><span>Expect system requirements to change; so design the system to accommodate these changes. </span></li></ul></li><li><p><span>Maintain simplicity</span></p><ul><li><span>Focus on simplicity in both the software being developed and in the development process. Actively work to eliminate complexity from the system. </span></li></ul></li></ul></li><li><h5><a name="explain-agile-applicability" class="md-header-anchor"></a><span>Explain Agile Applicability</span></h5><ul><li><p><span>Developing small or medium-size product</span></p></li><li><p><span>requires </span></p><ol><li><span>customer willing to be involved in development process</span></li><li><span>few external regulations affect the software. </span></li></ol></li></ul></li><li><h5><a name="explain-the-limitations-of-agile-method" class="md-header-anchor"></a><span>Explain the limitations of Agile method</span></h5><ul><li><span>may not scale to large systems: focus on small, tightly-integrated teams. </span></li><li><span>intense interactions may not suit development team. </span></li><li><span>prioritizing change is hard with multiple stakeholders. </span></li><li><span>maintaining simplicity requires extra work. </span></li></ul></li><li><h5><a name="how-agile-methods-apply-to-software-maintenance" class="md-header-anchor"></a><span>How Agile methods apply to software maintenance?</span></h5><ul><li><p><span>Lacking Formal Documentation</span></p><ul><li><p><span>Good documentation supports maintenance. </span></p><ul><li><span>BDUF has docs, but docs get out of date fast. </span></li><li><span>Agile focuses on clear code, expressing the design which is better manintained. </span></li></ul></li><li><p><span>Agile can create required documents as needed. </span></p></li></ul></li><li><p><span>Changing needs in Maintenance</span></p><ul><li><p><span>Agile good at accommodating change. </span></p></li><li><p><span>Challenging if original developers leave team. </span></p><ul><li><span>Process is less formal, so may be poorly understood by new group of devs. </span></li></ul></li></ul></li></ul></li><li><h5><a name="choose-plan-driven-or-agile" class="md-header-anchor"></a><span>choose plan-driven or agile</span></h5><ul><li><p><span>Need </span><u><span>detailed specification</span></u><span> and design before moving to implementation. (Plan)</span></p></li><li><p><span>Is an </span><u><span>incremental delivery</span></u><span> strategy with rapid feedback </span><u><span>realistic</span></u><span>? (Agile)</span></p></li><li><p><span>Is it a </span><u><span>small-medium</span></u><span> size system being developed? (Agile)</span></p><ul><li><span>Agile most effective with small team who ca communicate informally.</span></li></ul></li><li><p><span>Does it require a lot of </span><u><span>analysis</span></u><span> before implementation? (Plan)</span></p><ul><li><span>real-time system with complex timing requirements. </span></li></ul></li><li><p><span>Is it expected to be </span><u><span>long lived</span></u><span> where system maintainers </span><u><span>need design docs</span></u><span>? (P &amp; A)</span></p></li><li><p><span>Are good tools available to </span><u><span>support development</span></u><span>? (A)</span></p><ul><li><span>high frequency merges, etc. Tools becomes quite important. </span></li></ul></li><li><p><span>Is team </span><u><span>spread out / outsourced</span></u><span> and </span><u><span>needs design docs</span></u><span> to communicate? (P)</span></p></li><li><p><span>Does team have a </span><u><span>plan-based</span></u><span> development </span><u><span>culture</span></u><span> (engineering)? (P)</span></p></li><li><p><span>Is detailed documentation required for </span><u><span>external regulatory approval</span></u><span>? (P)</span></p></li></ul></li><li><h5><a name="what-is-xp" class="md-header-anchor"></a><span>What is XP?</span></h5><ul><li><p><span>Extreme programming takes best software development practices to an extreme </span></p><ul><li><span>Short iterations; (deliver working software often (&lt; 2weeks))</span></li><li><span>Frequent communication with customer rather than at start/end. </span></li><li><span>All tests automated and pass for each change</span></li><li><span>Based on 12 XP Practices. </span></li></ul></li></ul></li><li><h5><a name="12-xp-practices" class="md-header-anchor"></a><span>12 XP practices</span></h5><ul><li><span>small releases</span></li><li><span>simple design</span></li><li><span>test-driven development</span></li><li><span>refactoring</span></li><li><span>pair programming</span></li><li><span>collective ownership 集体所有权</span></li><li><span>continuous integration 持续集成</span></li><li><span>sustainable pace 可持续的步伐</span></li><li><span>on-site customer 现场客户</span></li></ul></li><li><h5><a name="pair-programming" class="md-header-anchor"></a><span>pair programming</span></h5><ul><li><p><span>Developers work in pairs sitting together to develop code. </span></p></li><li><p><span>pairs change so everyone works together. </span></p></li><li><p><span>Fosters common ownership of code and spreads knowledge across the team. </span></p><ul><li><span>reduce problem when key developers leave.</span></li><li><span>no one person blamed for bugs.</span></li></ul></li><li><p><span>Informal review process - each line of code instantly reviewed. </span></p></li><li><p><span>Encourages refactoring - whole team gets benefit of clean code.</span></p></li></ul></li><li><h5><a name="not-designing-for-change" class="md-header-anchor"></a><span>not designing for change</span></h5><ul><li><span>XP&#39;s view - changes cannot be reliably anticipated. </span></li><li><span>XP uses refactoring to constantly inprove code. </span></li><li><span>This makes changes easier when they have to be implemented. </span></li></ul></li><li><h5><a name="refactoring" class="md-header-anchor"></a><span>Refactoring</span></h5><ul><li><p><span>Developers look for possible code improvements and make these improvements even where there is no immediate need for them.</span></p><ul><li><span>this improves the understandability of the code and reduces the need for documentation. </span></li></ul></li><li><p><span>Changes are easier to make because code is well-structured and clear. </span></p><ul><li><span>However, some changes require architecture refactoring and this is much more expensive. </span></li></ul></li></ul></li><li><h5><a name="3-refactorings" class="md-header-anchor"></a><span>3 refactorings</span></h5><ul><li><u><span>renaming method</span></u><span> to make its purpose clearer. </span></li><li><u><span>extract method</span></u><span> to make a long function shorter or reduce duplicate code. </span></li><li><u><span>extract class</span></u><span> to split a class which does 2 things into two classes. </span></li></ul></li><li><h5><a name="what-is-test-driven-development-tdd" class="md-header-anchor"></a><span>What is test-driven development (TDD)?</span></h5><ul><li><span>inter-leave writting tests and writting code. </span></li></ul></li><li><h5><a name="what-is-automated-test-its-advantage" class="md-header-anchor"></a><span>What is automated test? its advantage?</span></h5><ul><li><p><span>tests are written as executable components before the task is implemented. </span></p><ul><li><span>automated testing framework(JUnit) runs stand-alone tests which simulate imput and check result. </span></li></ul></li><li><p><span>Tests run whenever new functionality added. </span></p><ul><li><span>Tests can be run quickly and easily. </span></li><li><span>Catch problems immediately. </span></li></ul></li><li><p><span>Automated verification </span></p><ul><li><span>gives developers the confidence and security of knowing nothing broke. </span></li><li><span>needed to support aggressive refactoring. </span></li></ul></li></ul></li><li><h5><a name="tdd--pair-programming-game" class="md-header-anchor"></a><span>TDD &amp; Pair programming game</span></h5><ul><li><p><span>Take turns while pairing. Valid moves are: </span></p><ul><li><p><span>if project in Red:</span></p><ul><li><span>make it green - must implement code / fix test. </span></li></ul></li><li><p><span>If project in Green: </span></p><ul><li><span>Write new failing test. </span></li><li><span>Write new passing test.</span></li><li><span>Refactor</span></li></ul></li></ul></li></ul></li><li><h5><a name="benefits-of-tdd" class="md-header-anchor"></a><span>Benefits of TDD</span></h5><ul><li><p><span>Code coverage </span></p><ul><li><span>Each line of code written to satisfy a test, so all lines are tested. </span></li></ul></li><li><p><span>Regression testing 回归测试</span></p><ul><li><span>run old tests after new changes to prove you have not broken previous features. </span></li><li><span>a regression test suite is continually developed as a program is developed. </span></li></ul></li><li><p><span>Simplified debugging</span></p><ul><li><span>when a test fails, it should be obvious where the problem lies (the new stuff!).</span></li></ul></li><li><p><span>System documentation</span></p><ul><li><p><span>The tests themselves are a form of documentation that describe what the code should be doing. </span></p><p>&nbsp;</p></li></ul></li></ul></li></ul></div>
+</body>
+</html>
